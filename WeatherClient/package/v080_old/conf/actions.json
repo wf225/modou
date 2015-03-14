@@ -1,0 +1,15 @@
+{
+    "start_auto_update" : {
+      "id" : "start_auto_update",
+      "is_sync" : false,
+      "cmd"   : "./init start_auto",
+      "relative": true
+    },
+    "stop_auto_update" : {
+      "id" : "stop_auto_update",
+      "is_sync" : false,
+      "cmd"   : "./init stop_auto",
+      "relative": true
+    }
+ }
+

@@ -1,0 +1,154 @@
+﻿#!/bin/sh 
+# version=0.8.0
+
+CURDIR=$(cd $(dirname $0) && pwd)
+APP_TITLE="魔豆天气"
+APP_NAME="modouweather"
+APP_CMD="$CURDIR/$APP_NAME.sh"
+APP_LAUNCHER="$CURDIR/$APP_NAME.conf"
+APP_LAUNCHER_CONF_DIR="/data/conf/launcher/conf.d"
+APP_LAUNCHER_CONF_FILE="$APP_LAUNCHER_CONF_DIR/$APP_NAME.conf"
+DATAJSON="$CURDIR/conf/data.json"
+
+APP_NORMAL_ICON="res/appicon_weather_normal.png"
+APP_PRESSED_ICON="res/appicon_weather_pressed.png"
+
+BIN_CUSTOM="/system/apps/tp/bin/custom"
+BIN_PKILL="/usr/bin/pkill"
+BIN_INSTALL="/usr/bin/install"
+BIN_REMOVE="/bin/rm -f"
+
+usage() {
+    echo "ERROR: action missing"
+    echo "syntax: $0 <start|stop|restart|status|config|install|uninstall>"
+    echo "example: $0 start"
+}
+
+start() {
+	$APP_CMD start
+    return 0;
+}
+
+stop() {
+	$APP_CMD stop
+    return 0;
+}
+
+install() {
+    if [ -f "$APP_LAUNCHER" ]; then 
+      rm $APP_LAUNCHER
+    fi
+
+    echo "    { \"name\" : \"$APP_TITLE\"," >> $APP_LAUNCHER
+    echo "      \"icon\" : \"$CURDIR/$APP_NORMAL_ICON\"," >> $APP_LAUNCHER
+    echo "      \"iconPressed\" : \"$CURDIR/$APP_PRESSED_ICON\"," >> $APP_LAUNCHER
+    echo "      \"exec\" : \"/bin/sh $APP_CMD start\"," >> $APP_LAUNCHER
+    echo "      \"msgNum\" : 4" >> $APP_LAUNCHER
+    echo "    }" >> $APP_LAUNCHER
+
+    $BIN_INSTALL -d $APP_LAUNCHER_CONF_DIR
+    $BIN_INSTALL "$APP_LAUNCHER" "$APP_LAUNCHER_CONF_FILE"
+	
+    return 0;
+}
+
+uninstall() {
+    $BIN_REMOVE $APP_LAUNCHER_CONF_FILE
+    $BIN_REMOVE -r -f $CURDIR;	
+	echo "uninstall";
+    return 0;
+}
+
+status()
+{
+    echo "Hello, modou-weather";
+    return 0;
+}
+
+set_config()
+{
+    $APP_CMD stop
+    $APP_CMD start
+    return 0;
+}
+
+start_auto()
+{
+	echo "start_auto()"
+	/system/sbin/json4sh.sh "set" $DATAJSON state_auto_update value true
+}
+
+stop_auto()
+{
+	echo "stop_auto()"
+	/system/sbin/json4sh.sh "set" $DATAJSON state_auto_update value false
+}
+
+# main
+if [ $# -lt 1 ]; then
+    usage
+    exit 1
+fi
+
+case "$1" in 
+    "stop")
+        stop;
+        if [ "0" != "$?" ]; then
+            exit 1;
+        fi 
+        exit 0;
+        ;;
+    "start")
+        start;
+        if [ "0" != "$?" ]; then
+            exit 1;
+        fi 
+        exit 0;
+        ;;
+    "status")
+        status;
+        if [ "0" != "$?" ]; then
+            exit 1;
+        fi 
+        exit 0;
+        ;;
+    "set_config")
+        set_config;
+        if [ "0" != "$?" ]; then
+            exit 1;
+        fi 
+        exit 0;
+        ;;
+    "install")
+        install;
+        if [ "0" != "$?" ]; then
+            exit 1;
+        fi 
+        exit 0;
+        ;;
+    "uninstall")
+        uninstall;
+        if [ "0" != "$?" ]; then
+            exit 1;
+        fi 
+        exit 0;
+        ;;
+    "start_auto")
+        start_auto;
+        if [ "0" != "$?" ]; then
+            exit 1;
+        fi 
+        exit 0;
+        ;;
+    "stop_auto")
+        stop_auto;
+        if [ "0" != "$?" ]; then
+            exit 1;
+        fi 
+        exit 0;
+        ;;	
+    *)
+        usage init;
+        exit 1;
+        ;;
+esac

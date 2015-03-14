@@ -1,0 +1,72 @@
+{
+    "main_page_modouweather" : {
+      "id" : "main_page_modouweather",
+      "name" : "魔豆天气",
+      "type" : "main",
+      "data" : {
+        "state_auto_update" : {
+          "id" : "state_auto_update",
+          "access" : "RO"
+        },
+        "city_name" : {
+          "id" : "city_name",
+          "access" : "RO"
+        },
+        "city_id" : {
+          "id" : "city_id",
+          "access" : "RO"
+        }
+      },
+      "menu" : {
+        "1" : {
+          "index" : 1,
+          "text" : "服务控制",
+          "type" : "MENU",
+          "items" : {
+            "1" : {
+              "index" : 1,
+              "text" : "开启自动更新",
+              "type" : "COMMAND",
+              "action" : "start_auto_update",
+              "input" : "params"
+            },
+            "2" : {
+              "index" : 2,
+              "text" : "关闭自动更新",
+              "type" : "COMMAND",
+              "action" : "stop_auto_update",
+              "input" : "params"
+            },
+            "3" : {
+              "index" : 3,
+              "text" : "配置城市",
+              "type" : "VIEW",
+              "viewid" : "page_city_setting"
+            }
+          }
+        },
+        "2" : {
+          "index" : 2,
+          "text" : "配置城市",
+          "type" : "VIEW",
+          "viewid" : "page_city_setting"
+        }
+      }
+    },
+    "page_city_setting" : {
+      "id" : "page_city_setting",
+      "name" : "配置城市",
+      "type" : "sub",
+      "data" : {
+          "city_name" : {
+          "id" : "city_name",
+          "access" : "RW"
+        },
+        "city_id" : {
+          "id" : "city_id",
+          "access" : "RW"
+        }
+      }
+    }
+ }
+

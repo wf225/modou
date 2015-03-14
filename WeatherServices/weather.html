@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>魔豆天气</title>
+    <link rel="stylesheet" type="text/css" href="js/common/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" type="text/css" href="js/common/jquery.mobile.theme-1.4.5.css" />
+    <link rel="stylesheet" type="text/css" href="css/demos.css" />
+    <script type="text/javascript" src="js/common/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/common/jsrender.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/aqi_rank.js"></script>
+    <script type="text/javascript" src="js/common/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+<div id="page_weather" data-role="page" data-theme="a">
+	<div data-role="header" data-position="fixed">
+		<h1>魔豆天气</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+        <div>
+            <a href="weather.html?cityid=101010100" data-transition="slide">北京</a>
+            <a href="weather.html?cityid=101020100" data-transition="slide">上海</a>
+            <a href="weather.html?cityid=101050101" data-transition="slide">哈尔滨</a>
+            <a href="weather.html?cityid=101130101" data-transition="slide">乌鲁木齐</a>
+            <a href="weather.html?cityid=101140101" data-transition="slide">拉萨</a>
+            <a href="weather.html?cityid=101280101" data-transition="slide">广州</a>
+            <a href="weather.html?cityid=101220801" data-transition="slide">阜阳</a>
+            <a href="#page_aqi_rank" data-transition="slideup">[AQI排行榜]</a>
+        </div>
+
+        <table class="op_weather_table" style="text-align:left">
+            <tr>
+                <td style="width:60%">
+                    <div id="weatherToday"></div>
+                    <div id="weatherNow"></div>
+                </td>
+                <td style="vertical-align:bottom;">
+                    <div id="guideList">
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+         <!--空气质量-->
+        <div id="aqiInfo" class="aqi">
+            <p id="aqi">
+            </p>
+            <div class="op_pm25_level">
+                <div class="op_pm25_level1">
+                </div>
+                <div class="op_pm25_level2">
+                </div>
+                <div class="op_pm25_level3">
+                </div>
+                <div class="op_pm25_level4">
+                </div>
+                <div class="op_pm25_level5">
+                </div>
+                <div class="op_pm25_level6">
+                </div>
+                <div id="jiaobiao">
+                </div>
+            </div>
+            <div class="op_pm25_levelnum">
+                <div class="op_pm25_levelint">
+                    50</div>
+                <div class="op_pm25_levelint">
+                    100</div>
+                <div class="op_pm25_levelint">
+                    150</div>
+                <div class="op_pm25_levelint">
+                    200</div>
+                <div class="op_pm25_levelint">
+                    300</div>
+                <div class="op_pm25_levelint">
+                    >500</div>
+            </div>
+            <div class="op_pm25_levelnum">
+                <div class="op_pm25_levelint">
+                    优</div>
+                <div class="op_pm25_levelint">
+                    良</div>
+                <div class="op_pm25_levelint">
+                    轻度污染</div>
+                <div class="op_pm25_levelint">
+                    中度污染</div>
+                <div class="op_pm25_levelint">
+                    重度污染</div>
+                <div class="op_pm25_levelint">
+                    严重污染</div>
+            </div>
+            <div class="op_pm25_des">
+                <strong>温馨提示：</strong>
+                <br />
+                <div id="tsContent"></div>
+            </div>
+        </div>
+        <div>
+            <table id="aqiList" class="op_pm25_table" width="100%" border="0" cellpadding="0" cellspacing="0">
+            </table>
+        </div>
+
+        <!-- 六天预报 -->
+        <table class="op_pm25_table">
+            <tbody id="weatherList">
+            </tbody>
+        </table> 
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<p>Copyright 2015 魔豆天气</p>
+	</div><!-- /footer -->
+</div>
+
+<script id="weatherTodayTemplate" type="text/x-jsrender">
+    <div>
+		<b>{{>city}}</b> 
+        {{>date}} {{>week}} 
+	</div>
+    <div>
+        <img src="res/weather/chinaweather/b_{{>forecastArray[0].dayPicUrl}}">
+    </div>
+    <div>
+        {{>forecastArray[0].weather}}
+    </div>
+    <!-- <div>
+        {{>forecastArray[0].low}}~{{>forecastArray[0].high}}℃
+    </div> -->
+</script>
+
+<script id="weatherNowTemplate" type="text/x-jsrender">
+    <div>
+        {{>temp}}℃
+	</div>
+    <div>
+        湿度 {{>humidity}}
+	</div>
+    <div>
+        {{>wind}}
+	</div>
+    <div>
+        更新：{{>update_time}}
+	</div>
+    <div>
+        {{>file_time}}
+	</div>
+</script>
+    
+<script id="weatherTemplate" type="text/x-jsrender">
+    <tr>
+        {{for forecastArray}}
+		    <td style="width:16.6%">
+                {{>week}}<br/>
+                <img src="res/weather/chinaweather/{{>dayPicUrl}}"><br/>
+                {{>low}}℃<br/>
+                {{>high}}℃<br/>
+            </td>
+        {{/for}}
+    </tr>
+</script>
+    
+<script id="guideTemplate" type="text/x-jsrender">
+	<div>
+        <img src="{{>picUrl}}"> {{>title}} : {{>guide}}
+	</div>
+</script>
+
+<script id="aqiTemplate" type="text/x-jsrender">
+    {{tag_aqi_num aqi quality}}
+    {{/tag_aqi_num}}
+    <div>
+        首要污染物: {{>primary_pollutant}}
+        更新: {{>time_point}}
+        <br/>{{>file_time}}
+	</div>
+</script>
+
+<script id="aqiListTemplate" type="text/x-jsrender">>
+    <tr>
+        <td style="width:25%">
+            PM2.5<br/>
+            细颗粒物<br/>
+            <span class="pm25">{{>pm2_5}}</span>
+        </td>
+        <td style="width:25%">
+            PM10<br/>
+            可吸入颗粒物<br/>
+            <span class="pm10">{{>pm10}}</span>
+        </td>
+        <td style="width:25%">
+            SO2<br/>
+            二氧化硫<br/>
+            <span class="eyhl">{{>so2}}</span>
+        </td>
+        <td style="width:25%">
+            NO2<br/>
+            二氧化氮<br/>
+            <span class="eyhd">{{>no2}}</span>
+        </td>
+    </tr>
+</script>
+
+<div id="page_aqi_rank" data-role="page" data-theme="a">
+	<div data-role="header" data-position="fixed">
+		<h1>空气质量排行榜(根据AQI排序)</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+        <div>
+            <a href="#page_weather">首页</a>
+            <a href="http://pm25.in/rank">数据源自 pm25.in</a>
+        </div>
+        <table class="op_pm25_table">
+            <thead>
+                <tr>
+                    <td>排名</td>
+                    <td>城市</td>
+                    <td>AQI</td>
+                    <td>指数类别</td>
+                    <td>PM2.5<br />
+                        细颗粒物</td>
+                    <td>PM10<br />
+                        可吸入颗粒物</td>
+                    <td>SO2<br />
+                        二氧化硫</td>
+                    <td>NO2<br />
+                        二氧化氮</td>
+                </tr>
+            </thead>
+            <tbody id="aqi_rank_list">
+            </tbody>
+        </table>
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<table class="op_pm25_table">
+            <thead>
+                <tr>
+                    <td>排名</td>
+                    <td>城市</td>
+                    <td>AQI</td>
+                    <td>类别</td>
+                    <td>PM2.5</td>
+                    <td>PM10</td>
+                    <td>SO2</td>
+                    <td>NO2</td>
+                </tr>
+            </thead>
+        </table>
+	</div><!-- /footer -->
+</div>
+
+<script id="aqi_rank_listTemplate" type="text/x-jsrender">>
+    <tr>
+        <td>
+            <span>{{:#index+1}}</span>
+        </td>
+        <td>
+            <span>{{>area}}</span>
+        </td>
+        <td>
+            <span>{{>aqi}}</span>
+        </td>
+        <td>
+            <span>{{>quality}}</span>
+        </td>
+        <td>
+            <span>{{>pm2_5}}</span>
+        </td>
+        <td>
+            <span>{{>pm10}}</span>
+        </td>
+        <td>
+            <span>{{>so2}}</span>
+        </td>
+        <td>
+            <span>{{>no2}}</span>
+        </td>
+    </tr>
+</script>
+
+</body>
+
+</html>

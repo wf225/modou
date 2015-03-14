@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "weatherServices", "weatherServices.phpproj", "{8E9F24CD-7410-4B0E-9C4C-7D3596927E1E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Local|PHP 5.3 = Local|PHP 5.3
+		Production|PHP 5.3 = Production|PHP 5.3
+		Staging|PHP 5.3 = Staging|PHP 5.3
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E9F24CD-7410-4B0E-9C4C-7D3596927E1E}.Local|PHP 5.3.ActiveCfg = Release|Any CPU
+		{8E9F24CD-7410-4B0E-9C4C-7D3596927E1E}.Production|PHP 5.3.ActiveCfg = Release|Any CPU
+		{8E9F24CD-7410-4B0E-9C4C-7D3596927E1E}.Staging|PHP 5.3.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

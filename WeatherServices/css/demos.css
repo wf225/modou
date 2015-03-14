@@ -1,0 +1,145 @@
+﻿body {
+	padding: 10px;
+	font-family: Verdana;
+	font-size: small;
+}
+
+h4 {
+	font-size: inherit`;
+	font-variant: small-caps;
+}
+
+.height {
+	width: 100%;
+	margin-bottom: 10px;
+	float: left;
+	clear: both;
+}
+
+.bottom {
+	height: 400px;
+	width: 100%;
+	margin-bottom: 10px;
+	float: left;
+	clear: both;
+}
+
+body > button {
+	float: left;
+	clear: right;
+	margin: 3px;
+}
+
+.subhead {
+	margin: 3px 0 5px 0;
+	font-weight: bolder;
+	color: #116;
+	font-family: Arial;
+	font-size: 10pt;
+}
+
+a {
+	color: #55b;
+}
+
+pre {
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.inset {
+	padding-left: 18px;
+}
+
+.box {
+	border: 1px solid #777;
+	padding: 10px;
+	margin: 5px 0 30px;
+}
+
+.box div {
+	margin: 3px 0 10px 0;
+}
+
+.box .label {
+	margin: 0;
+	padding: 10px 0 0 0;
+	font-style: italic;
+	color: #55b;
+}
+
+.box.label {
+	font-style: italic;
+	color: #55b;
+}
+
+.desc {
+	font-style: italic;
+	margin: 0 0 15px;
+	color: #116;
+}
+
+pre {
+	border-left: 3px solid #aaa;
+	padding: 10px;
+	margin-bottom: 30px;
+}
+
+.indexitems {
+	list-style-type: none;
+	padding-left: 10px;
+	margin: 0 0 20px;
+}
+
+.indexitems li {
+	margin-top: 14px;
+}
+
+.indexitems .inset {
+	margin-top: 6px;
+}
+
+h3 {
+	margin-bottom: 10px;
+	font-size: 11pt;
+}
+
+select {
+	margin-bottom: 15px;
+	width: 200px;
+}
+
+.aqi p span.da{color:#555;font-size:20px;font-weight:bold}
+
+.op_pm25_level{clear:both;height:8px;position:relative}
+.op_pm25_level1,.op_pm25_level2,.op_pm25_level3,.op_pm25_level4,.op_pm25_level5,.op_pm25_level6{background:none repeat scroll 0 0 #43ce17;border-left:1px solid #fff;float:left;height:6px;overflow:hidden;width:16%}
+.op_pm25_level2{background:none repeat scroll 0 0 #efdc31}
+.op_pm25_level3{background:none repeat scroll 0 0 #fa0}
+.op_pm25_level4{background:none repeat scroll 0 0 #ff401a}
+.op_pm25_level5{background:none repeat scroll 0 0 #d20040}
+.op_pm25_level6{background:none repeat scroll 0 0 #9c0a4e}
+
+.op_pm25_levelnum{clear:both;color:#666;font-size:12px;padding-top:2px}
+.op_pm25_levelint{float:left;text-align:right;width:16%;font-size:12px}
+.op_pm25_levelint span{float:left;margin-left:1px}
+.op_pm25_des{clear:both;color:#333;font-size:14px;line-height:22px;width:90%;margin:0 auto;padding:12px 0 0}
+.op_pm25_des strong{font-weight:bold}
+
+.op_pm25_table{border-collapse:collapse;border-spacing:0;border-top:1px solid #ebebeb;color:#333;margin-top:0px;width:100%}
+.op_pm25_table td sub{font-size:10px}
+.op_pm25_table td{border-bottom:1px solid #ebebeb;padding:8px 0;text-align:center;width:86px}
+.op_pm25_table td p{line-height:18px}
+.op_pm25_table td.op_pm25_unitaqi{border:0 none;padding:8px 0 0;text-align:left;width:100%}
+
+.op_weather_table{border-collapse:collapse;border-spacing:0;border-top:1px solid #ebebeb;color:#333;margin-top:12px;width:100%}
+.op_weather_table td{border-bottom:1px solid #ebebeb;padding:8px 0;width:86px}
+
+.op_pm25_i,.op_pm25_leveli1,.op_pm25_leveli2,.op_pm25_leveli3,.op_pm25_leveli4,.op_pm25_leveli5,.op_pm25_leveli6{background:url(../res/weather/newpm25.png) no-repeat scroll 0 0 rgba(0,0,0,0);border-width:5px;height:5px;position:absolute;top:-7px;width:10px;z-index:1}.op_pm25_leveli2{background-position:-10px 0}
+.op_pm25_leveli3{background-position:-20px 0}
+.op_pm25_leveli4{background-position:-30px 0}
+.op_pm25_leveli5{background-position:-40px 0}
+.op_pm25_leveli6{background-position:-50px 0}
+
+.ui-header .ui-title,.ui-footer .ui-title{ margin-right: 0 !important; margin-left: 0 !important }
+
+

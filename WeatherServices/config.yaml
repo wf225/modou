@@ -1,0 +1,11 @@
+name: modouweather
+version: 71
+
+handle:
+- rewrite: if (!-d && !-f) goto "/services/RESTful.php?%{QUERY_STRING}"
+
+
+cron:
+- description: fetch_data data every 10 minutes.
+  url: /services/fetch_data
+  schedule: "*/10 * * * *"

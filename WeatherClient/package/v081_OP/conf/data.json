@@ -1,0 +1,33 @@
+﻿{
+    "state_auto_update" : {
+      "id" : "state_auto_update",
+      "name" : "自动更新",
+      "value" : false,
+      "group_id" : "main_info_display",
+      "type" : {
+        "class" : "BOOL"
+      }
+    },
+    "city_name" : {
+      "id" : "city_name",
+      "name" : "城市名称",
+      "value" : "上海",
+      "group_id" : "main_info_display",
+      "type" : {
+        "class" : "STRING",
+        "min" : 2,
+        "max" : 16
+      }
+    },
+    "city_id" : {
+      "id" : "city_id",
+      "name" : "城市代码",
+      "value" : 2151849,
+      "group_id" : "main_info_display",
+      "type" : {
+        "class" : "INT",
+        "min" : 101010100,
+        "max" : 101340904
+      }
+    }
+ }
