@@ -1,6 +1,6 @@
 魔豆天气
 =============
-![](https://github.com/wf225/modou/screenshot.png)
+![](https://github.com/wf225/modou/blob/master/screenshot.png)
 
 为魔豆路由器量身定做的天气预报 app。
 
