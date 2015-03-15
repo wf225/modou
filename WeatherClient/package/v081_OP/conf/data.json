@@ -21,13 +21,13 @@
     },
     "city_id" : {
       "id" : "city_id",
-      "name" : "城市代码",
-      "value" : 2151849,
+      "name" : "城市列表",
+      "value" : "<a href='http://www.cnblogs.com/wf225/p/4336136.html' target='_blank'>支持城市列表</a>",
       "group_id" : "main_info_display",
       "type" : {
-        "class" : "INT",
-        "min" : 101010100,
-        "max" : 101340904
+        "class" : "STRING",
+        "min" : 2,
+        "max" : 100
       }
     }
  }

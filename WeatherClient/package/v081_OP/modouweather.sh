@@ -1,5 +1,5 @@
 ﻿#!/bin/sh
-# version=0.8.1
+# version=0.8.2
 
 CURDIR=$(cd $(dirname $0) && pwd)
 APP_WCLOCK="/$CURDIR/bin/wclock"

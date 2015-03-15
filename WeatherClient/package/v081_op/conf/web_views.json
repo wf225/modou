@@ -1,0 +1,13 @@
+{
+        "widgets":
+        [
+                {
+                        "id": "city_name"
+                        "access" : "RW"
+                },
+                {
+                        "id" : "city_id",
+                        "access" : "R"
+                }
+        ]
+}

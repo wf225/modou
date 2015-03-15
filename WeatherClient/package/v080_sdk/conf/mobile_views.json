@@ -1,4 +1,4 @@
-{
+﻿{
     "main_page_modouweather" : {
       "id" : "main_page_modouweather",
       "name" : "魔豆天气",
@@ -64,7 +64,7 @@
         },
         "city_id" : {
           "id" : "city_id",
-          "access" : "RW"
+          "access" : "R"
         }
       }
     }

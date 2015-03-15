@@ -1,5 +1,5 @@
 ﻿#!/bin/sh 
-# version=0.8.0
+# version=0.8.2
 
 CURDIR=$(cd $(dirname $0) && pwd)
 APP_TITLE="魔豆天气"
@@ -10,8 +10,8 @@ APP_LAUNCHER_CONF_DIR="/data/conf/launcher/conf.d"
 APP_LAUNCHER_CONF_FILE="$APP_LAUNCHER_CONF_DIR/$APP_NAME.conf"
 DATAJSON="$CURDIR/conf/data.json"
 
-APP_NORMAL_ICON="res/appicon_weather_normal.png"
-APP_PRESSED_ICON="res/appicon_weather_pressed.png"
+ICON_NORMAL="res/icon.png"
+ICON_PRESSED="res/icon_pressed.png"
 
 BIN_CUSTOM="/system/apps/tp/bin/custom"
 BIN_PKILL="/usr/bin/pkill"
@@ -40,8 +40,8 @@ install() {
     fi
 
     echo "    { \"name\" : \"$APP_TITLE\"," >> $APP_LAUNCHER
-    echo "      \"icon\" : \"$CURDIR/$APP_NORMAL_ICON\"," >> $APP_LAUNCHER
-    echo "      \"iconPressed\" : \"$CURDIR/$APP_PRESSED_ICON\"," >> $APP_LAUNCHER
+    echo "      \"icon\" : \"$CURDIR/$ICON_NORMAL\"," >> $APP_LAUNCHER
+    echo "      \"iconPressed\" : \"$CURDIR/$ICON_PRESSED\"," >> $APP_LAUNCHER
     echo "      \"exec\" : \"/bin/sh $APP_CMD start\"," >> $APP_LAUNCHER
     echo "      \"msgNum\" : 4" >> $APP_LAUNCHER
     echo "    }" >> $APP_LAUNCHER
@@ -133,14 +133,14 @@ case "$1" in
         fi 
         exit 0;
         ;;
-	"start_auto")
+    "start_auto")
         start_auto;
         if [ "0" != "$?" ]; then
             exit 1;
         fi 
         exit 0;
         ;;
-	"stop_auto")
+    "stop_auto")
         stop_auto;
         if [ "0" != "$?" ]; then
             exit 1;

@@ -1,12 +1,12 @@
 ﻿#!/bin/sh
-# version=0.8.0
+# version=0.8.2
 
 CURDIR=$(cd $(dirname $0) && pwd)
 APP_WCLOCK="/$CURDIR/bin/wclock"
 PIDFILE="$CURDIR/conf/custom.pid"
 
-CITYID="101020100"
-URL_WEATHER="http://80.modouweather.sinaapp.com/services/weather/v080"
+CITYID=""
+URL_WEATHER="http://modouweather.sinaapp.com/services/weather"
 PATH_WEATHER=$CURDIR/"data/weather_info.json"
 DATAJSON="$CURDIR/conf/data.json"
 SETCONF="$CURDIR/data/customset.conf"
@@ -40,8 +40,7 @@ download()
 
 	# 2. get weather info form server
 	SN=`sn_get snmac`
-	MAC=`ifconfig|grep br0|awk '{print $5}'`
-	URL_WEATHER="${URL_WEATHER}/$CITYID/$MAC"
+	URL_WEATHER="$URL_WEATHER/$CITYID/$SN"
 
 	printf '%10s %s\n' SN $SN
 	printf '%10s %s\n' MAC $MAC
@@ -62,7 +61,7 @@ start()
 		echo "show new weather"
 		
 		#设置自动更新：每30分钟一次
-		sed -i -e '$a\*/3 \* \* \* \* '$CURDIR'/modouweather.sh download >/dev/null' $CRON
+		sed -i -e '$a\*/30 \* \* \* \* '$CURDIR'/modouweather.sh download >/dev/null' $CRON
 		/system/sbin/crond.sh restart
 		
 		$APP_WCLOCK
