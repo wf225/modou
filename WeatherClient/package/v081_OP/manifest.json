@@ -1,11 +1,12 @@
-﻿{ "package_id"      : "com.wf225.modouweather",
-  "name"            : "魔豆天气",
+{
+  "package_id"      : "com.wf225.modouweather",
+  "name"            : "app-modouweather",
   "display_name"    : "魔豆天气",
   "author"          : "无锋不起浪",
   "author_forum_id" : "wf225", 
   "author_mail"     : "wf225@126.com",
   "homepage"        : "weibo.com/778950279",
-  "version"         : "0.8.2",
+  "version"         : "0.8.3",
   "os_version"      : "1.3.06",
   "release_date"    : "2015.3.15",
   "icon"            : "./res/icon.png",
@@ -13,5 +14,7 @@
   "description"     : "天气、时钟、空气质量。数据来源:雅虎天气, pm25.in",
   "instruction"     : "安装后,在应用中不需要将 \"启动\" 打开",
   "autostart"       : false,
-  "start_on_boot"   : false 
+  "start_on_boot"   : false,
+  "no_service"      : true,
+  "change_log"      : "修改了天气界面不能实时更新的BUG。"
 }
