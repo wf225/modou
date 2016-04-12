@@ -4,8 +4,8 @@
 
 为魔豆路由器量身定做的天气预报 app。
 
-## 安装 ##
-* 下载地址：http://bbs.modouwifi.cn/thread-11459-1-1.html。
+## 下载 & 安装 ##
+* 详见地址：http://bbs.modouwifi.cn/thread-11459-1-1.html。
 
 ## 更新历史 ##
 
